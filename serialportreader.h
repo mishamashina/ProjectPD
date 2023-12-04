@@ -22,6 +22,7 @@ public:
     explicit SerialPortReader(QSerialPort *serialPort, QObject *parent = nullptr);
     QSerialPort *m_serialPort = nullptr;
     QByteArray m_readData;
+    int m_readDataInt;
 
 signals:
 
