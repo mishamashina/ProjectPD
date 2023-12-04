@@ -25,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent), ui(new Ui::MainWin
     connect(reader, &SerialPortReader::ChangeValue, ui->widget_3, &WidgetSC::ValueSC);
     connect(reader, &SerialPortReader::ChangeValue, ui->widget_4, &WidgetTerm::ValueTerm);
     connect(reader, &SerialPortReader::ValueRezv, ui->widget_5, &widgetdistRezv::distRezv);
+    connect(reader, &SerialPortReader::ChangeValue, ui->widget, &WidgetAngle::ValueAngle);
+
   //  connect(reader, &SerialPortReader::ValueRezv, this, &MainWindow::distRezv);
 
     ///////////////////////////////////////////////////////////

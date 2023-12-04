@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1326</width>
+    <width>1580</width>
     <height>954</height>
    </rect>
   </property>
@@ -112,13 +112,23 @@
      </rect>
     </property>
    </widget>
+   <widget class="WidgetAngle" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>450</y>
+      <width>421</width>
+      <height>381</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1326</width>
+     <width>1580</width>
      <height>22</height>
     </rect>
    </property>
@@ -138,7 +148,7 @@
   <customwidget>
    <class>WidgetZX</class>
    <extends>QWidget</extends>
-   <header location="global">widgetzx.h</header>
+   <header>widgetzx.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -157,6 +167,12 @@
    <class>widgetdistRezv</class>
    <extends>QWidget</extends>
    <header>widgetdistrezv.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetAngle</class>
+   <extends>QWidget</extends>
+   <header>widgetangle.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

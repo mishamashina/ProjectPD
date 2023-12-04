@@ -30,6 +30,7 @@ SOURCES += \
         mainwindow.cpp \
     serialportmanager.cpp \
     serialportreader.cpp \
+    widgetangle.cpp \
     widgetdistrezv.cpp \
     widgetsc.cpp \
     widgetterm.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
         mainwindow.h \
     serialportmanager.h \
     serialportreader.h \
+    widgetangle.h \
     widgetdistrezv.h \
     widgetsc.h \
     widgetterm.h \

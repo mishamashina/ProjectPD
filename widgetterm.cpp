@@ -190,17 +190,17 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         //        // Отрисовка текста с текущим значением
 
         if (numb_lbPovorot < 35) {
-            qDebug() << "first";
+            //qDebug() << "first";
             fillHeight = 2 * numb_lbPovorot;
             painter.setBrush(Qt::blue);
 
         } if ((numb_lbPovorot >= 35) && (numb_lbPovorot < 70) ) {
-            qDebug() << "second";
+            //qDebug() << "second";
             fillHeight = 2 * numb_lbPovorot;
             painter.setBrush(Qt::yellow);
 
         } if (numb_lbPovorot >= 70) {
-            qDebug() << "third";
+            //qDebug() << "third";
             fillHeight = 2 * numb_lbPovorot;
             painter.setBrush(Qt::red);
         }
