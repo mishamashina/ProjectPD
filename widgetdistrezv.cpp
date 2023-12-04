@@ -28,7 +28,7 @@ void widgetdistRezv::distRezv(QByteArray m_readData)
 
     ColorPick4 = value / 10000 % 10;
     qDebug() << "Значение ColorPick4" << ColorPick4;
-    ColorPick6string = QString::number(ColorPick6);
+    ColorPick4string = QString::number(ColorPick4);
 
     ColorPick3 = value / 100000 % 10;
     qDebug() << "Значение ColorPick3" << ColorPick3;
@@ -230,8 +230,8 @@ void widgetdistRezv::paintEvent(QPaintEvent *event)
         QPoint p28(210, 260); //210 220
         QPoint p29(240, 90);//240 50
         QPoint p30(360, 260);//360 220
-        QPoint p31(320, 330);//320 290
-        QPoint p32(240, 330);//240 290
+        QPoint p31(320, 335);//320 290
+        QPoint p32(250, 335);//240 290
         QPoint p33(210, 150);//210 110
         QPoint p34(360, 150);//360 110
 
@@ -243,4 +243,5 @@ void widgetdistRezv::paintEvent(QPaintEvent *event)
         painter.drawText(p32, ColorPick6string);
         painter.drawText(p33, ColorPick7string);
         painter.drawText(p34, ColorPick8string);
+        qDebug() << "ColorPick5string" << ColorPick5string;
 }

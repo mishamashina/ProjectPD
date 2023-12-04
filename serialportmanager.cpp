@@ -12,7 +12,7 @@ SerialPortManager::SerialPortManager(QString portName,
 
     this->portName = portName;
 
-    this->serialPort->setPortName("com8");
+    this->serialPort->setPortName(portName);
     this->serialPort->setBaudRate(baud);
     this->serialPort->setDataBits(bits);
     this->serialPort->setStopBits(sbits);
