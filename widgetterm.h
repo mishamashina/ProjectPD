@@ -16,6 +16,7 @@ public:
     int numb_lbPovorot;
     int i = 10;
     int radiusx = 140;
+    QString num_lbPovorotString;
 
     bool checkedMinimal;
     bool checkedClassic;

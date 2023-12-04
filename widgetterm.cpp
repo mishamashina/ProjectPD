@@ -14,6 +14,7 @@ void WidgetTerm::ValueTerm(int value)
     num_lb = value / 4;
     numb_lbPovorot = value;
     num_lbString = QString::number(num_lb);
+    num_lbPovorotString = QString::number(numb_lbPovorot);
     update();
 }
 
@@ -72,6 +73,7 @@ void WidgetTerm::boolGradient(bool checked)
     checkedClassic = false;
     checkedCombine = false;
     update();
+
 }
 
 void WidgetTerm::paintEvent(QPaintEvent *event)
@@ -113,6 +115,7 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
 
     if (checkedGradient)
     {
+        qDebug() << "num_lb" <<num_lb;
         int widgetHeight = height();
         int y = widgetHeight / 2 - 100;
         int width = 40;
@@ -121,7 +124,7 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
 
         painter.setPen(Qt::black);
         painter.setFont(QFont("Ubuntu", 16));
-        painter.drawText(QRect(15, 75, 200, 460), Qt::AlignCenter, "°C");
+        painter.drawText(50, 250, "°C");
 
         // Рисование термометра - серая часть
         painter.setPen(Qt::NoPen);
@@ -129,8 +132,8 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         painter.drawRect(75,75, width, height);
 
         // Отрисовка шкалы - белая часть
-        painter.setBrush(Qt::white);
-        painter.drawRect(75, 75 + height, width, 10);
+//        painter.setBrush(Qt::white);
+//        painter.drawRect(75, 75 + height, width, 10);
 
         //painter.setBrush(Qt::yellow);
 
@@ -141,26 +144,71 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
 
 //        // Отрисовка текста с текущим значением
 
-        if (num_lb < 10 && num_lb > 0) {
-            fillHeight = 6 * num_lb;
+        if (numb_lbPovorot < 35) {
+            qDebug() << "first";
+            fillHeight = 2 * numb_lbPovorot;
             painter.setBrush(Qt::blue);
-        } else if (num_lb >= 10 && num_lb < 20 ) {
-            fillHeight = 6 * num_lb;
+
+        } if ((numb_lbPovorot >= 35) && (numb_lbPovorot < 70) ) {
+            qDebug() << "second";
+            fillHeight = 2 * numb_lbPovorot;
            painter.setBrush(Qt::yellow);
 
-        } else if (num_lb >= 20 && num_lb < 30) {
-            fillHeight = 6 * num_lb;
+        } if (numb_lbPovorot >= 70) {
+           qDebug() << "third";
+            fillHeight = 2 * numb_lbPovorot;
             painter.setBrush(Qt::red);
+
 
         }
 
         painter.drawRect(75, 75 + height - fillHeight, width, fillHeight);
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Ubuntu", 16));
+        painter.drawText(25, 250, num_lbString);
+        //second term
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Ubuntu", 16));
+        painter.drawText(220, 250, "°C");
 
+            // Рисование термометра - серая часть
+            painter.setPen(Qt::NoPen);
+        painter.setBrush(Qt::darkGray);
+        painter.drawRect(150,75, width, height);
+
+        // Отрисовка шкалы - белая часть
+        //        painter.setBrush(Qt::white);
+        //        painter.drawRect(75, 75 + height, width, 10);
+
+        //painter.setBrush(Qt::yellow);
+
+        for (int i = 0; i <= 10; ++i) {
+            int tickY = y + height + i * (-height / 10);
+            painter.drawLine(75, tickY, 75 + width, tickY);
+        }
+
+        //        // Отрисовка текста с текущим значением
+
+        if (numb_lbPovorot < 35) {
+            qDebug() << "first";
+            fillHeight = 2 * numb_lbPovorot;
+            painter.setBrush(Qt::blue);
+
+        } if ((numb_lbPovorot >= 35) && (numb_lbPovorot < 70) ) {
+            qDebug() << "second";
+            fillHeight = 2 * numb_lbPovorot;
+            painter.setBrush(Qt::yellow);
+
+        } if (numb_lbPovorot >= 70) {
+            qDebug() << "third";
+            fillHeight = 2 * numb_lbPovorot;
+            painter.setBrush(Qt::red);
+        }
+        painter.drawRect(150, 75 + height - fillHeight, width, fillHeight);
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Ubuntu", 16));
+        painter.drawText(195, 250, num_lbString);
     }
-
-
-
-
 
     if (checkedMinimal)
     {

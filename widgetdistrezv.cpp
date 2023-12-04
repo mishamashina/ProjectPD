@@ -243,5 +243,4 @@ void widgetdistRezv::paintEvent(QPaintEvent *event)
         painter.drawText(p32, ColorPick6string);
         painter.drawText(p33, ColorPick7string);
         painter.drawText(p34, ColorPick8string);
-        qDebug() << "ColorPick5string" << ColorPick5string;
 }
