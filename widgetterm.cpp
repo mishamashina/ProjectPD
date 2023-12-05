@@ -116,99 +116,89 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
 
     if (checkedGradient)
     {
-        qDebug() << "num_lb" <<num_lb;
-        int widgetHeight = height();
-        int y = widgetHeight / 2 - 100;
-        int width = 40;
-        int height = 200;
-        int fillHeight = 160;
+        QSizeF size(70, 280);
+        QPointF pointf1(cent1.rx() - 35, cent1.ry() - 140);
+        QRectF rectf1(pointf1, size);
 
-        painter.setPen(Qt::black);
-        painter.setFont(QFont("Ubuntu", 16));
-        painter.drawText(50, 250, "°C");
+        QPointF pointf2(cent2.rx() - 35, cent2.ry() - 140);
+        QRectF rectf2(pointf2, size);
 
-        // Рисование термометра - серая часть
-        painter.setPen(Qt::NoPen);
-        painter.setBrush(Qt::darkGray);
-        painter.drawRect(75,75, width, height);
+        qDebug() << rectf1.center();
+        qDebug() << rectf2.center();
 
-        // Отрисовка шкалы - белая часть
-//        painter.setBrush(Qt::white);
-//        painter.drawRect(75, 75 + height, width, 10);
 
-        //painter.setBrush(Qt::yellow);
+        painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::FlatCap));
 
-        for (int i = 0; i <= 10; ++i) {
-            int tickY = y + height + i * (-height / 10);
-            painter.drawLine(75, tickY, 75 + width, tickY);
+        if (num_lb < 10)
+        {
+            QLinearGradient linearGrad(QPointF(210, 185+140), QPointF(210, 185+140 - num_lb*9.3));
+            QLinearGradient linearGrad1(QPointF(560, 185+140), QPointF(560, 185+140 - num_lb*9.3));
+
+            linearGrad.setColorAt(0, Qt::green);
+            linearGrad.setColorAt(1, QColor(0, 0, 0, 0));
+
+            linearGrad1.setColorAt(0, Qt::green);
+            linearGrad1.setColorAt(1, QColor(0, 0, 0, 0));
+
+            painter.setBrush(linearGrad);
+            painter.drawRoundedRect(rectf1, 10, 10);
+
+            painter.setBrush(linearGrad1);
+            painter.drawRoundedRect(rectf2, 10, 10);
+        }
+        else if(num_lb < 20)
+        {
+            QLinearGradient linearGrad(QPointF(210, 185+140), QPointF(210, 185+140 - num_lb*9.3));
+            QLinearGradient linearGrad1(QPointF(560, 185+140), QPointF(560, 185+140 - num_lb*9.3));
+
+            linearGrad.setColorAt(0, Qt::yellow);
+            linearGrad.setColorAt(1, QColor(0, 0, 0, 0));
+
+            linearGrad1.setColorAt(0, Qt::yellow);
+            linearGrad1.setColorAt(1, QColor(0, 0, 0, 0));
+
+            painter.setBrush(linearGrad);
+            painter.drawRoundedRect(rectf1, 10, 10);
+
+            painter.setBrush(linearGrad1);
+            painter.drawRoundedRect(rectf2, 10, 10);
+        }
+        else
+        {
+            QLinearGradient linearGrad(QPointF(210, 185+140), QPointF(210, 185+140 - num_lb*9.3));
+            QLinearGradient linearGrad1(QPointF(560, 185+140), QPointF(560, 185+140 - num_lb*9.3));
+
+            linearGrad.setColorAt(0, Qt::red);
+            linearGrad.setColorAt(1, QColor(0, 0, 0, 0));
+
+            linearGrad1.setColorAt(0, Qt::red);
+            linearGrad1.setColorAt(1, QColor(0, 0, 0, 0));
+
+            painter.setBrush(linearGrad);
+            painter.drawRoundedRect(rectf1, 10, 10);
+
+            painter.setBrush(linearGrad1);
+            painter.drawRoundedRect(rectf2, 10, 10);
         }
 
-//        // Отрисовка текста с текущим значением
+        painter.setFont(font3);
 
-        if (numb_lbPovorot < 35) {
-            qDebug() << "first";
-            fillHeight = 2 * numb_lbPovorot;
-            painter.setBrush(Qt::blue);
-
-        } if ((numb_lbPovorot >= 35) && (numb_lbPovorot < 70) ) {
-            qDebug() << "second";
-            fillHeight = 2 * numb_lbPovorot;
-           painter.setBrush(Qt::yellow);
-
-        } if (numb_lbPovorot >= 70) {
-           qDebug() << "third";
-            fillHeight = 2 * numb_lbPovorot;
-            painter.setBrush(Qt::red);
-
-
+        if (num_lb < 10)
+        {
+            painter.drawText(QPointF(200, 185+180), num_lbString);
+            painter.drawText(QPointF(550, 185+180), num_lbString);
         }
 
-        painter.drawRect(75, 75 + height - fillHeight, width, fillHeight);
-        painter.setPen(Qt::black);
-        painter.setFont(QFont("Ubuntu", 16));
-        painter.drawText(25, 250, num_lbString);
-        //second term
-        painter.setPen(Qt::black);
-        painter.setFont(QFont("Ubuntu", 16));
-        painter.drawText(220, 250, "°C");
-
-            // Рисование термометра - серая часть
-            painter.setPen(Qt::NoPen);
-        painter.setBrush(Qt::darkGray);
-        painter.drawRect(150,75, width, height);
-
-        // Отрисовка шкалы - белая часть
-        //        painter.setBrush(Qt::white);
-        //        painter.drawRect(75, 75 + height, width, 10);
-
-        //painter.setBrush(Qt::yellow);
-
-        for (int i = 0; i <= 10; ++i) {
-            int tickY = y + height + i * (-height / 10);
-            painter.drawLine(75, tickY, 75 + width, tickY);
+        else
+        {
+            painter.drawText(QPointF(190, 185+180), num_lbString);
+            painter.drawText(QPointF(540, 185+180), num_lbString);
         }
 
-        //        // Отрисовка текста с текущим значением
+        painter.setFont(font2);
+        painter.drawText(QPointF(235, 185+180), "°C");
+        painter.drawText(QPointF(585, 185+180), "°C");
 
-        if (numb_lbPovorot < 35) {
-            //qDebug() << "first";
-            fillHeight = 2 * numb_lbPovorot;
-            painter.setBrush(Qt::blue);
-
-        } if ((numb_lbPovorot >= 35) && (numb_lbPovorot < 70) ) {
-            //qDebug() << "second";
-            fillHeight = 2 * numb_lbPovorot;
-            painter.setBrush(Qt::yellow);
-
-        } if (numb_lbPovorot >= 70) {
-            //qDebug() << "third";
-            fillHeight = 2 * numb_lbPovorot;
-            painter.setBrush(Qt::red);
-        }
-        painter.drawRect(150, 75 + height - fillHeight, width, fillHeight);
-        painter.setPen(Qt::black);
-        painter.setFont(QFont("Ubuntu", 16));
-        painter.drawText(195, 250, num_lbString);
     }
 
     if (checkedMinimal)
