@@ -60,26 +60,41 @@ void WidgetSC::paintEvent(QPaintEvent *event)
     QRect r(0,0, this->width(), this->height());
     QPoint cent = r.center();
 
+
     qDebug() << "checkedMinimal SPEED" << checkedMinimal;
     qDebug() << "checkedClassic SPEED" << checkedClassic;
     qDebug() << "checkedCombine SPEED" << checkedCombine;
 
     if (checkedMinimal)
     {
+        painter.drawRect(painter.viewport());
+
         QFont font("Ubuntu", 20, QFont::Bold);
-        QFont font2("Ubuntu", 40, QFont::Bold);
+        QFont font2("Ubuntu", 35, QFont::Bold);
         painter.setFont(font);
 
         QPoint km(180,320);
         QPoint c1(cent.rx()- 30, cent.ry()- 30);
+        QPoint c2(cent.rx()- 20, cent.ry()- 30);
+        QPoint c3(cent.rx() - 45, cent.ry()- 30);
         painter.setFont(font);
         painter.drawText(km, "км/ч");
 
         painter.setFont(font2);
+        painter.setPen(Qt::red);
 
-        painter.drawText(c1, num_lb13string);
-
-        painter.drawRect(painter.viewport());
+        if (num_lb13 < 10)
+        {
+            painter.drawText(c2, num_lb13string);
+        }
+        else if (num_lb13 < 100)
+        {
+            painter.drawText(c1, num_lb13string);
+        }
+        else
+        {
+            painter.drawText(c3, num_lb13string);
+        }
 
         painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::FlatCap));
         painter.setBrush(QBrush(QColor(0, 0, 0, 0), Qt::SolidPattern));
@@ -89,7 +104,7 @@ void WidgetSC::paintEvent(QPaintEvent *event)
 
     if (checkedClassic)
     {
-        QFont font("Ubuntu", 30, QFont::Bold);
+        QFont font("Ubuntu", 20, QFont::Bold);
         QFont font2("Ubuntu", 20, QFont::Bold);
         painter.setFont(font);
 
@@ -158,15 +173,21 @@ void WidgetSC::paintEvent(QPaintEvent *event)
         {
             painter.rotate(num_lb13*2);
             QPoint p3(0,0);
-            QPoint p4(radiusx, 0);
+            QPoint p4(radiusx - 10, 0);
             painter.drawLine(p3,p4);
         }
+
+        painter.resetTransform();
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(QBrush(Qt::black, Qt::SolidPattern));
+        painter.drawEllipse(cent, 5, 5);
     }
 
     if (checkedCombine)
     {
-        QFont font("Ubuntu", 30, QFont::Bold);
+        QFont font("Ubuntu", 20, QFont::Bold);
         QFont font2("Ubuntu", 20, QFont::Bold);
+        QFont font3("Ubuntu", 35, QFont::Bold);
         painter.setFont(font);
 
         QPoint p11(280,320); //120 // 280,280
@@ -178,6 +199,8 @@ void WidgetSC::paintEvent(QPaintEvent *event)
         QPoint p7(70, 280+40); // 0
         QPoint k(180,320);
         QPoint c2(cent.rx()-20, cent.ry()+60);
+        QPoint c3(cent.rx()- 10, cent.ry()+60);
+        QPoint c4(cent.rx()- 35, cent.ry()+60);
 
 
         painter.drawText(p11, "120");
@@ -188,11 +211,25 @@ void WidgetSC::paintEvent(QPaintEvent *event)
         painter.drawText(p6, "20");
         painter.drawText(p7, "0");
 
-        painter.drawText(c2, num_lb13string);
+        painter.setFont(font3);
+        painter.setPen(Qt::red);
+
+        if (num_lb13 < 10)
+        {
+            painter.drawText(c3, num_lb13string);
+        }
+        else if (num_lb13 < 100)
+        {
+            painter.drawText(c2, num_lb13string);
+        }
+        else
+        {
+            painter.drawText(c4, num_lb13string);
+        }
         //painter.drawText(c2, "num_lb13string");
 
         painter.setFont(font2);
-
+        painter.setPen(Qt::black);
         painter.drawText(k, "км/ч");
 
 
@@ -239,8 +276,13 @@ void WidgetSC::paintEvent(QPaintEvent *event)
         {
             painter.rotate(num_lb13*2);
             QPoint p3(0,0);
-            QPoint p4(radiusx, 0);
+            QPoint p4(radiusx - 10, 0);
             painter.drawLine(p3,p4);
         }
+
+        painter.resetTransform();
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(QBrush(Qt::black, Qt::SolidPattern));
+        painter.drawEllipse(cent, 5, 5);
     }
 }

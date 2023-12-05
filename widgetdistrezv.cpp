@@ -53,6 +53,9 @@ void widgetdistRezv::paintEvent(QPaintEvent *event)
         pen.setStyle(Qt::SolidLine);
         pen.setWidth(7);
 
+        QRect r(0,0, this->width(), this->height());
+        painter.drawRect(r);
+
         QBrush brush;
         brush.setStyle(Qt::SolidPattern);
         painter.drawRect(200, 50, 200, 300);

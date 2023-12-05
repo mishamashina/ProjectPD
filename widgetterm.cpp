@@ -92,8 +92,9 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
     qDebug() << "checkedCombine TERM" << checkedCombine;
     qDebug() << "checkedGradient TERM" << checkedGradient;
 
-    QFont font("Ubuntu", 20, QFont::Bold);
+    QFont font("Ubuntu", 15, QFont::Bold);
     QFont font2("Ubuntu", 15);
+    QFont font3("Ubuntu", 25, QFont::Bold);
 
     QPoint p11(270,220+30); //120 // 280,280
     QPoint p22(290,150+30);
@@ -222,9 +223,18 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         painter.drawText(k, "°C");
         painter.drawText(kcent2, "°C");
 
-        painter.setFont(font);
-        painter.drawText(cent1.rx() - 20, cent1.ry(), num_lbString);
-        painter.drawText(cent2.rx() - 20, cent2.ry(), num_lbString);
+        painter.setFont(font3);
+        painter.setPen(Qt::red);
+        if (num_lb < 10)
+        {
+            painter.drawText(cent1.rx() - 10, cent1.ry(), num_lbString);
+            painter.drawText(cent2.rx() - 10, cent2.ry(), num_lbString);
+        }
+        else
+        {
+            painter.drawText(cent1.rx() - 20, cent1.ry(), num_lbString);
+            painter.drawText(cent2.rx() - 20, cent2.ry(), num_lbString);
+        }
     }
 
     if (checkedClassic)
@@ -296,7 +306,7 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         {
             painter.rotate(numb_lbPovorot*2);
             QPoint p3(0,0);
-            QPoint p4(radiusx, 0);
+            QPoint p4(radiusx - 10, 0);
             painter.drawLine(p3,p4);
         }
         ////////////////////////////////////////////////////////////////////////
@@ -339,14 +349,25 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         {
             painter.rotate(numb_lbPovorot*2);
             QPoint p3(0,0);
-            QPoint p4(radiusx, 0);
+            QPoint p4(radiusx - 10, 0);
             painter.drawLine(p3,p4);
         }
 
+        painter.resetTransform();
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(QBrush(Qt::black, Qt::SolidPattern));
+        painter.drawEllipse(cent1, 5, 5);
+        painter.drawEllipse(cent2, 5, 5);
     }
 
     if (checkedCombine)
     {
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(QBrush(Qt::black, Qt::SolidPattern));
+        painter.drawEllipse(cent1, 5, 5);
+        painter.drawEllipse(cent2, 5, 5);
+        painter.setPen(Qt::black);
+
         painter.setFont(font);
 
         painter.drawText(p11cent2, "30");
@@ -365,9 +386,21 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         painter.drawText(p6, "5");
         painter.drawText(p7, "0");
 
-        painter.drawText(cent1.rx() - 15, cent1.ry() + 50, num_lbString);
-        painter.drawText(cent2.rx() - 15, cent2.ry() + 50, num_lbString);
+        painter.setFont(font3);
+        painter.setPen(QPen(Qt::red));
 
+        if (num_lb < 10)
+        {
+            painter.drawText(cent1.rx() - 5, cent1.ry() + 50, num_lbString);
+            painter.drawText(cent2.rx() - 5, cent2.ry() + 50, num_lbString);
+        }
+        else
+        {
+            painter.drawText(cent1.rx() - 15, cent1.ry() + 50, num_lbString);
+            painter.drawText(cent2.rx() - 15, cent2.ry() + 50, num_lbString);
+        }
+
+        painter.setPen(QPen(Qt::black));
         painter.setFont(font2);
         painter.drawText(k, "°C");
         painter.drawText(kcent2, "°C");
@@ -417,7 +450,7 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         {
             painter.rotate(numb_lbPovorot*2);
             QPoint p3(0,0);
-            QPoint p4(radiusx, 0);
+            QPoint p4(radiusx - 10, 0);
             painter.drawLine(p3,p4);
         }
         ////////////////////////////////////////////////////////////////////////
@@ -460,8 +493,14 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         {
             painter.rotate(numb_lbPovorot*2);
             QPoint p3(0,0);
-            QPoint p4(radiusx, 0);
+            QPoint p4(radiusx - 10, 0);
             painter.drawLine(p3,p4);
         }
+
+        painter.resetTransform();
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(QBrush(Qt::black, Qt::SolidPattern));
+        painter.drawEllipse(cent1, 5, 5);
+        painter.drawEllipse(cent2, 5, 5);
     }
 }
