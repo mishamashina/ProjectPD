@@ -4,9 +4,7 @@
 #include <QMainWindow>
 #include "serialportreader.h"
 #include "serialportmanager.h"
-//#include "widgetdistrezv.h"
-//#include "widgetzx.h"
-//#include "widgetst.h"
+
 #include <QMainWindow>
 #include <QSerialPort>
 #include <QThread>

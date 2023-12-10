@@ -32,6 +32,7 @@ SOURCES += \
     serialportreader.cpp \
     widgetangle.cpp \
     widgetdistrezv.cpp \
+    widgetmap.cpp \
     widgetsc.cpp \
     widgetterm.cpp \
     widgetzx.cpp
@@ -43,6 +44,7 @@ HEADERS += \
     serialportreader.h \
     widgetangle.h \
     widgetdistrezv.h \
+    widgetmap.h \
     widgetsc.h \
     widgetterm.h \
     widgetzx.h

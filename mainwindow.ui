@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1587</width>
+    <width>2148</width>
     <height>1039</height>
    </rect>
   </property>
@@ -20,47 +20,9 @@
       <x>540</x>
       <y>0</y>
       <width>351</width>
-      <height>221</height>
+      <height>421</height>
      </rect>
     </property>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>100</y>
-       <width>71</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>30</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_8">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>120</y>
-       <width>51</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Км</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
@@ -107,7 +69,7 @@
      <rect>
       <x>960</x>
       <y>10</y>
-      <width>511</width>
+      <width>421</width>
       <height>391</height>
      </rect>
     </property>
@@ -122,13 +84,23 @@
      </rect>
     </property>
    </widget>
+   <widget class="WidgetMap" name="widget_6" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1420</x>
+      <y>10</y>
+      <width>411</width>
+      <height>391</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1587</width>
+     <width>2148</width>
      <height>22</height>
     </rect>
    </property>
@@ -173,6 +145,12 @@
    <class>WidgetAngle</class>
    <extends>QWidget</extends>
    <header>widgetangle.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetMap</class>
+   <extends>QWidget</extends>
+   <header>widgetmap.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

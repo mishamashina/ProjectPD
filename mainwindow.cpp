@@ -85,12 +85,12 @@ void MainWindow::createActions()
     MinimalSpeed = new QAction(tr("&Минималистический"), this);
     MinimalSpeed->setStatusTip(tr("Минималистический дизайн"));
     MinimalSpeed->setCheckable(true);
-    MinimalSpeed->setChecked(true);
+    //MinimalSpeed->setChecked(true);
 
     ClassicSpeed = new QAction(tr("&Классический"), this);
     ClassicSpeed->setStatusTip(tr("Классический дизайн"));
     ClassicSpeed->setCheckable(true);
-    //ClassicSpeed->setChecked(true);
+    ClassicSpeed->setChecked(true);
 
     CombineSpeed = new QAction(tr("&Комбинированный"), this);
     CombineSpeed->setStatusTip(tr("Комбинированный дизайн"));
@@ -136,6 +136,6 @@ void MainWindow::createMenus()
 
 void MainWindow::ChangeValue(int value)
 {
-    ui->label_7->setNum(value);
+    //ui->label_7->setNum(value);
 }
 

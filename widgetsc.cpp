@@ -4,8 +4,8 @@
 WidgetSC::WidgetSC(QWidget *parent)
     : QWidget{parent}
 {
-    checkedMinimal = true;
-    checkedClassic = false;
+    checkedMinimal = false;
+    checkedClassic = true;
     checkedCombine = false;
 }
 
