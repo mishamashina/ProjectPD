@@ -32,12 +32,12 @@ void WidgetZX::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     QPainter painter(this);
 
-
+    QFont font("Ubuntu", 16, QFont::Bold);
     painter.drawRect(painter.viewport());
 
     painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::FlatCap));
 
-    if (first_datch < 33)
+    if (first_datch < 33 && first_datch > 0)
     {
         QLinearGradient linearGrad(QPointF(90, 80), QPointF(first_datch*2 +90, 80));
         linearGrad.setColorAt(0, Qt::red);
@@ -58,16 +58,19 @@ void WidgetZX::paintEvent(QPaintEvent *event)
         linearGrad.setColorAt(1, QColor(0, 0, 0, 0));
         painter.setBrush(linearGrad);
     }
-
+    painter.setFont(font);
     QRectF rectangle(90.0, 80.0, 200.0, 50.0);
     painter.drawRoundedRect(rectangle, 30.0, 30.0);
-    painter.drawText(40, 40, string_value_first);
+    painter.drawText(183, 110, string_value_first);
+    painter.drawText(130, 70, "Запас хода %");
 
-    QRectF rectangle1(90.0, 160.0, 200.0, 50.0);
+    QRectF rectangle1(90.0, 200.0, 200.0, 50.0);
     painter.drawRoundedRect(rectangle1, 30.0, 30.0);
-    painter.drawText(40, 60, string_value_second);
+    painter.drawText(183, 230, string_value_second);
+    painter.drawText(100, 190, "Запас хода 80 км/ч");
 
-    QRectF rectangle2(90.0, 240.0, 200.0, 50.0);
+    QRectF rectangle2(90.0, 320.0, 200.0, 50.0);
     painter.drawRoundedRect(rectangle2, 30.0, 30.0);
-    painter.drawText(40, 80, string_value_third);
+    painter.drawText(183, 350, string_value_third);
+    painter.drawText(100, 310, "Запас хода 110 км/ч");
 }
