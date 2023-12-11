@@ -1,5 +1,4 @@
-#ifndef WIDGETSC_H
-#define WIDGETSC_H
+#pragma once
 
 #include <QWidget>
 #include <QPainter>
@@ -35,5 +34,3 @@ signals:
     void signalCombineMinimal();
 
 };
-
-#endif // WIDGETSC_H

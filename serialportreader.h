@@ -1,6 +1,4 @@
-#ifndef SERIALPORTREADER_H
-#define SERIALPORTREADER_H
-
+#pragma once
 
 #include <QObject>
 #include <QByteArray>
@@ -33,5 +31,3 @@ signals:
 public slots:
     void handleReadyRead();
 };
-
-#endif // SERIALPORTREADER_H

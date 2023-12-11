@@ -1,15 +1,16 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
-#include "serialportreader.h"
 #include "serialportmanager.h"
+#include "serialportreader.h"
+#include "widgetangle.h"
+#include "widgetdistrezv.h"
+#include "widgetsc.h"
+#include "widgetterm.h"
+#include "widgetzx.h"
 
 #include <QMainWindow>
 #include <QSerialPort>
-#include <QThread>
-#include <QMutex>
-#include <QWaitCondition>
 #include <QDebug>
 #include <QPainter>
 #include <QAction>
@@ -65,5 +66,3 @@ public slots:
 private:
 
 };
-
-#endif // MAINWINDOW_H

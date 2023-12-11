@@ -1,9 +1,7 @@
-#ifndef WIDGETZX_H
-#define WIDGETZX_H
+#pragma once
 
 #include <QWidget>
 #include <QPainter>
-#include "mainwindow.h"
 #include <QDebug>
 
 class WidgetZX : public QWidget
@@ -26,6 +24,4 @@ public slots:
     void ValueZX(int value);
 
 };
-
-#endif // WIDGETZX_H
 

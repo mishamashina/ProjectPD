@@ -1,5 +1,4 @@
-#ifndef WIDGETMAP_H
-#define WIDGETMAP_H
+#pragma once
 
 #include <QObject>
 #include <QWidget>
@@ -44,5 +43,3 @@ public:
 signals:
 
 };
-
-#endif // WIDGETMAP_H

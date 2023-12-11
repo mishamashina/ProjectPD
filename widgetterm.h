@@ -1,5 +1,4 @@
-#ifndef WIDGETTERM_H
-#define WIDGETTERM_H
+#pragma once
 
 #include <QWidget>
 #include <QPainter>
@@ -47,5 +46,3 @@ signals:
     void signalGradientMinimal();
     void signalGradientCombine();
 };
-
-#endif // WIDGETTERM_H

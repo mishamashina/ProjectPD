@@ -1,6 +1,4 @@
-
-#ifndef SERIALPORTMANAGER_H
-#define SERIALPORTMANAGER_H
+#pragma once
 
 #include <QSerialPort>
 
@@ -22,5 +20,3 @@ private:
     QSerialPort *serialPort;
     QString portName;
 };
-
-#endif // SERIALPORTMANAGER_H

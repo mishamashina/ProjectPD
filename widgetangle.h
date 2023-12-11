@@ -1,5 +1,4 @@
-#ifndef WIDGETANGLE_H
-#define WIDGETANGLE_H
+#pragma once
 
 #include <QWidget>
 #include <QPainter>
@@ -20,5 +19,3 @@ public slots:
     void ValueAngle(int value);
 
 };
-
-#endif // WIDGETANGLE_H

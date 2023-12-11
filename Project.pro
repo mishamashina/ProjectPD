@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += core serialport
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -36,7 +35,6 @@ SOURCES += \
     widgetsc.cpp \
     widgetterm.cpp \
     widgetzx.cpp
-    serialportreader.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,7 +46,6 @@ HEADERS += \
     widgetsc.h \
     widgetterm.h \
     widgetzx.h
-    serialportreader.h
 
 FORMS += \
         mainwindow.ui

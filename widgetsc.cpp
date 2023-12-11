@@ -1,5 +1,4 @@
 #include "widgetsc.h"
-//#include "mainwindow.h"
 
 WidgetSC::WidgetSC(QWidget *parent)
     : QWidget{parent}

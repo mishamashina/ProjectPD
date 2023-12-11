@@ -1,5 +1,4 @@
-#ifndef WIDGETDISTREZV_H
-#define WIDGETDISTREZV_H
+#pragma once
 
 #include <QWidget>
 #include <QPainter>
@@ -34,5 +33,3 @@ public slots:
 
 
 };
-
-#endif // WIDGETDISTREZV_H
