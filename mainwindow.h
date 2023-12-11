@@ -45,7 +45,7 @@ public:
 
     QMenu *Speedometer;
     QMenu *Termometer;
-    QMenu *Сustomization;
+    QMenu *Customization;
 
     QAction *ClassicSpeed;
     QAction *MinimalSpeed;

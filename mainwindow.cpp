@@ -119,14 +119,14 @@ void MainWindow::createActions()
 void MainWindow::createMenus()
 {
 
-    Сustomization = menuBar()->addMenu(tr("&Кастомизация"));
+    Customization = menuBar()->addMenu(tr("&Кастомизация"));
 
-    Speedometer = Сustomization->addMenu(tr("&Спидометр"));
+    Speedometer = Customization->addMenu(tr("&Спидометр"));
     Speedometer->addAction(MinimalSpeed);
     Speedometer->addAction(ClassicSpeed);
     Speedometer->addAction(CombineSpeed);
 
-    Termometer = Сustomization->addMenu(tr("&Термометр"));
+    Termometer = Customization->addMenu(tr("&Термометр"));
     Termometer->addAction(MinimalTerm);
     Termometer->addAction(ClassicTerm);
     Termometer->addAction(CombineTerm);

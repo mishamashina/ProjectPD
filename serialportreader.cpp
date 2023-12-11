@@ -13,6 +13,7 @@ SerialPortReader::SerialPortReader(QSerialPort *serialPort, QObject *parent) :
 void SerialPortReader::handleReadyRead()
 {
 
+    static int counter = 0;
     m_readData.clear();
     m_readData.append(m_serialPort->readAll());
     qDebug() << m_readData;
@@ -26,7 +27,8 @@ void SerialPortReader::handleReadyRead()
             if (m_readDataInt < 120)
             {
                 m_readData = m_readData.left(1);
-                emit ChangeValue(m_readData.toInt());
+                //emit ChangeValue(m_readData.toInt());
+                emit ChangeValue(counter);
             }
         }
         if (m_readData.size() == 4)
@@ -35,7 +37,8 @@ void SerialPortReader::handleReadyRead()
             if (m_readDataInt < 120)
             {
                 m_readData = m_readData.left(2);
-                emit ChangeValue(m_readData.toInt());
+                //emit ChangeValue(m_readData.toInt());
+                emit ChangeValue(counter);
             }
         }
         if (m_readData.size() == 5)
@@ -44,7 +47,8 @@ void SerialPortReader::handleReadyRead()
             if (m_readDataInt < 120)
             {
                 m_readData = m_readData.left(3);
-                emit ChangeValue(m_readData.toInt());
+                //emit ChangeValue(m_readData.toInt());
+                emit ChangeValue(counter);
             }
         }
         qDebug() << m_readData;
@@ -56,4 +60,6 @@ void SerialPortReader::handleReadyRead()
 
         emit ValueRezv(m_readData);
     }
+    counter++;
+    if(counter >= 120) counter = 1;
 };

@@ -142,9 +142,9 @@ void WidgetMap::paintEvent(QPaintEvent *event)
 
     if (count == 0)
     {
-        myImage.load("/home/misha/ProjectPD-master/map.jpg");
+        myImage.load("/home_2/Projects/misha-pd/map.jpg");
 
-        if (myImage.load("/home/misha/ProjectPD-master/map.jpg"))
+        if (myImage.load("/home_2/Projects/misha-pd/map.jpg"))
         {
             qDebug() << "Download successful";
         }
@@ -159,14 +159,15 @@ void WidgetMap::paintEvent(QPaintEvent *event)
         painter.drawImage(painter.viewport(), myImage);
         painter.end();
 
-        myImage.save("/home/misha/ProjectPD-master/map_changed.jpg");
+        myImage.save("/home_2/Projects/misha-pd/map_changed.jpg");
         qDebug() << "Копия создана";
         count = 1;
     }
     else
     {
-        myImage.load("/home/misha/ProjectPD-master/map_changed.jpg");
-        if (myImage.load("/home/misha/ProjectPD-master/map_changed.jpg"))
+        //myImage.load("/home/misha/ProjectPD-master/map_changed.jpg");
+        myImage.load("/home_2/Projects/misha-pd/map_changed.jpg");
+        if (myImage.load("/home_2/Projects/misha-pd/map_changed.jpg"))
         {
             qDebug() << "Download successful else";
         }
