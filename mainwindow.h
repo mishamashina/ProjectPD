@@ -4,7 +4,9 @@
 #include <QMainWindow>
 #include "serialportreader.h"
 #include "serialportmanager.h"
-
+//#include "widgetdistrezv.h"
+//#include "widgetzx.h"
+//#include "widgetst.h"
 #include <QMainWindow>
 #include <QSerialPort>
 #include <QThread>
@@ -44,6 +46,7 @@ public:
     int  ColorPick8;
 
     QMenu *Speedometer;
+    QMenu *DistSensor;
     QMenu *Termometer;
     QMenu *Сustomization;
 
@@ -55,6 +58,9 @@ public:
     QAction *MinimalTerm;
     QAction *CombineTerm;
     QAction *GradientTerm;
+
+    QAction *StaticDist;
+    QAction *DynamicDist;
 
 
 public slots:

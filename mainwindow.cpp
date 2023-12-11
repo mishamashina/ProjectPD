@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+    #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "serialportreader.h"
 #include <QByteArray>
@@ -25,8 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent), ui(new Ui::MainWin
     connect(reader, &SerialPortReader::ChangeValue, ui->widget_3, &WidgetSC::ValueSC);
     connect(reader, &SerialPortReader::ChangeValue, ui->widget_4, &WidgetTerm::ValueTerm);
     connect(reader, &SerialPortReader::ValueRezv, ui->widget_5, &widgetdistRezv::distRezv);
-    connect(reader, &SerialPortReader::ChangeValue, ui->widget, &WidgetAngle::ValueAngle);
-
+    connect(reader, &SerialPortReader::ChangeValue, ui->widget, &WidgetAngle::ValueAngle);;
   //  connect(reader, &SerialPortReader::ValueRezv, this, &MainWindow::distRezv);
 
     ///////////////////////////////////////////////////////////
@@ -40,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent), ui(new Ui::MainWin
     connect(CombineTerm, &QAction::triggered, ui->widget_4, &WidgetTerm::boolCombine);
     connect(GradientTerm, &QAction::triggered, ui->widget_4, &WidgetTerm::boolGradient);
 
+    connect(StaticDist, &QAction::triggered, ui->widget_5, &widgetdistRezv::boolStatic);
+    connect(DynamicDist, &QAction::triggered, ui->widget_5, &widgetdistRezv::boolDynamic);
+
     ///////////////////////////////////////////////////////////
 
     connect(ui->widget_3, &WidgetSC::signalClassicMinimal, MinimalSpeed, &QAction::toggle);
@@ -48,7 +50,12 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent), ui(new Ui::MainWin
     connect(ui->widget_4, &WidgetTerm::signalClassicMinimal, MinimalTerm, &QAction::toggle);
     connect(ui->widget_4, &WidgetTerm::signalClassicCombine, CombineTerm, &QAction::toggle);
     connect(ui->widget_4, &WidgetTerm::signalClassicGradient, GradientTerm, &QAction::toggle);
+    /////////////////////////////////////////////////////////// Резвых Датчик расстояния
 
+    connect(ui->widget_5, &widgetdistRezv::signalDynamicStatic, StaticDist, &QAction::toggle);
+    connect(ui->widget_5, &widgetdistRezv::signalStaticDynamic, DynamicDist, &QAction::toggle);
+
+    ///////////////////////////////////////////////////////////Резвых Датчик расстояния
 
     //connect(ui->widget_3, &WidgetSC::signalClassicPers, ClassicS, &QAction::setChecked);
 
@@ -114,6 +121,17 @@ void MainWindow::createActions()
     GradientTerm = new QAction(tr("&Градиентный"), this);
     GradientTerm->setStatusTip(tr("Градиентный дизайн"));
     GradientTerm->setCheckable(true);
+
+    ///////////////////////////////////////////////////////////
+
+    StaticDist = new QAction(tr("&Статический"), this);
+    StaticDist->setStatusTip(tr("Статический дизайн"));
+    StaticDist->setCheckable(true);
+    StaticDist->setChecked(true);
+
+    DynamicDist = new QAction(tr("&Динамический"), this);
+    DynamicDist->setStatusTip(tr("Динамический дизайн"));
+    DynamicDist->setCheckable(true);
 }
 
 void MainWindow::createMenus()
@@ -132,6 +150,9 @@ void MainWindow::createMenus()
     Termometer->addAction(CombineTerm);
     Termometer->addAction(GradientTerm);
 
+    DistSensor = Сustomization->addMenu(tr("&Парктроник"));
+    DistSensor->addAction(StaticDist);
+    DistSensor->addAction(DynamicDist);
 }
 
 void MainWindow::ChangeValue(int value)
