@@ -8,6 +8,7 @@
 #include "widgetsc.h"
 #include "widgetterm.h"
 #include "widgetzx.h"
+#include "widgetmap.h"
 
 #include <QMainWindow>
 #include <QSerialPort>
@@ -16,10 +17,6 @@
 #include <QAction>
 
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -27,12 +24,19 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    Ui::MainWindow *ui;
     SerialPortReader* reader;
     SerialPortManager *sm;
 
     void createActions();
     void createMenus();
+    //void widgetsInit();
+
+    WidgetAngle *widget;
+    WidgetZX *widget_2;
+    WidgetSC *widget_3;
+    WidgetTerm *widget_4;
+    widgetdistRezv *widget_5;
+    WidgetMap *widget_6;
 
     int value;
     int  ColorPick1;
