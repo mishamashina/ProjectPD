@@ -27,7 +27,7 @@ void WidgetMap::initImage(QImage myImage)
 
 void WidgetMap::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << "keyPressEvent";
+    //qDebug() << "keyPressEvent";
 
     if (event->key() == Qt::Key_Plus)
     {
@@ -134,7 +134,7 @@ void WidgetMap::keyPressEvent(QKeyEvent *event)
 
 void WidgetMap::paintEvent(QPaintEvent *event)
 {
-    qDebug() << "QPaintEvent";
+    //qDebug() << "QPaintEvent";
     Q_UNUSED(event);
     QPainter painter(this);
 
@@ -146,21 +146,21 @@ void WidgetMap::paintEvent(QPaintEvent *event)
 
         if (myImage.load("/home_2/Projects/misha-pd/map.jpg"))
         {
-            qDebug() << "Download successful";
+            //qDebug() << "Download successful";
         }
         else
         {
-            qDebug() << "Download failed";
+            //qDebug() << "Download failed";
         }
 
-        qDebug() << myImage.size();
+        //qDebug() << myImage.size();
 
         painter.begin(&myImage);
         painter.drawImage(painter.viewport(), myImage);
         painter.end();
 
         myImage.save("/home_2/Projects/misha-pd/map_changed.jpg");
-        qDebug() << "Копия создана";
+        //qDebug() << "Копия создана";
         count = 1;
     }
     else
@@ -169,14 +169,14 @@ void WidgetMap::paintEvent(QPaintEvent *event)
         myImage.load("/home_2/Projects/misha-pd/map_changed.jpg");
         if (myImage.load("/home_2/Projects/misha-pd/map_changed.jpg"))
         {
-            qDebug() << "Download successful else";
+            //qDebug() << "Download successful else";
         }
         else
         {
-            qDebug() << "Download failed";
+            //qDebug() << "Download failed";
         }
 
-        qDebug() << myImage.size() << painter.viewport();
+        //qDebug() << myImage.size() << painter.viewport();
         painter.begin(&myImage);
         painter.drawRect(painter.viewport());
 
@@ -186,15 +186,15 @@ void WidgetMap::paintEvent(QPaintEvent *event)
         {
             painter.scale(scaleMinusAll,scaleMinusAll);
             painter.drawImage(painter.viewport(), myImage);
-            qDebug() << "Вошло checkedMinus";
-            qDebug() << "scaleMinus" << scaleMinusAll;
+            //qDebug() << "Вошло checkedMinus";
+            //qDebug() << "scaleMinus" << scaleMinusAll;
         }
         else if (checkedPlus)
         {
             painter.scale(scalePlusAll,scalePlusAll);
             painter.drawImage(painter.viewport(), myImage);
-            qDebug() << "Вошло checkedPlus";
-            qDebug() << "scalePlus" << scalePlusAll;
+            //qDebug() << "Вошло checkedPlus";
+            //qDebug() << "scalePlus" << scalePlusAll;
         }
         else if (checkedUp)
         {
@@ -207,27 +207,27 @@ void WidgetMap::paintEvent(QPaintEvent *event)
         {
 //            painter.scale(scalePlusAll,scalePlusAll);
 //            painter.drawImage(painter.viewport(), myImage);
-            qDebug() << "Вошло checkedDown";
-            qDebug() << "scalePlus" << scalePlusAll;
+            //qDebug() << "Вошло checkedDown";
+            //qDebug() << "scalePlus" << scalePlusAll;
         }
         else if (checkedRight)
         {
 //            painter.scale(scalePlusAll,scalePlusAll);
 //            painter.drawImage(painter.viewport(), myImage);
-            qDebug() << "Вошло checkedRight";
-            qDebug() << "scalePlus" << scalePlusAll;
+            //qDebug() << "Вошло checkedRight";
+            //qDebug() << "scalePlus" << scalePlusAll;
         }
         else if (checkedLeft)
         {
 //            painter.scale(scalePlusAll,scalePlusAll);
 //            painter.drawImage(painter.viewport(), myImage);
-            qDebug() << "Вошло checkedLeft";
-            qDebug() << "scalePlus" << scalePlusAll;
+            //qDebug() << "Вошло checkedLeft";
+            //qDebug() << "scalePlus" << scalePlusAll;
         }
         else
         {
             painter.drawImage(painter.viewport(), myImage);
-            qDebug() << "Вошло ELSE";
+            //qDebug() << "Вошло ELSE";
         }
         painter.resetTransform();
         //painter.save();

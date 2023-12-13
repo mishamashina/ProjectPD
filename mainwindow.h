@@ -28,9 +28,11 @@ public:
     //SerialPortReader* reader;
     SerialPortManager *sm;
 
+    void widgetsInit();
+    void comReaderInit();
     void createActions();
     void createMenus();
-    //void widgetsInit();
+    void customizationLogic();
 
     WidgetAngle *widget;
     WidgetZX *widget_2;

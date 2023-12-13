@@ -10,7 +10,7 @@ void WidgetZX::ValueZX(int value)
 
     num_lb7 = value;
     value_first_datch = num_lb7 * 3;
-    qDebug() << "value_first_datch" << value_first_datch;
+    //qDebug() << "value_first_datch" << value_first_datch;
     update();
 
 
@@ -20,7 +20,7 @@ void WidgetZX::ValueZX(int value)
 void WidgetZX::paintEvent(QPaintEvent *event)
 {
     first_datch =  (value_first_datch * 0.0025510204) * 100;
-    qDebug() << "first_datch" << first_datch;
+    //qDebug() << "first_datch" << first_datch;
     max_second_datch = (24 * 0.08) * 80 + (39 * 0.0833333) * 80;
     second_datch = max_second_datch * (value_first_datch * 0.0025510204);
     max_third_datch = 381;
@@ -31,9 +31,16 @@ void WidgetZX::paintEvent(QPaintEvent *event)
 
     Q_UNUSED(event);
     QPainter painter(this);
+    painter.drawRect(painter.viewport());
+
+
+    // Масштабирование
+    QPoint extremePoint(370, 440);
+    double sx = 1. * width()/extremePoint.x();
+    double sy = 1. * height()/extremePoint.y();
+    painter.scale(std::min(sx, sy), std::min(sx, sy));
 
     QFont font("Ubuntu", 16, QFont::Bold);
-    painter.drawRect(painter.viewport());
 
     painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::FlatCap));
 

@@ -17,7 +17,7 @@ void WidgetSC::ValueSC(int value)
 
 void WidgetSC::boolMinimal(bool checked)
 {
-    qDebug() << "Зашло boolMinimal";
+    //qDebug() << "Зашло boolMinimal";
     checkedMinimal = checked;
     if (checkedClassic == true){emit signalMinimalClassic();}
     if (checkedCombine == true){emit signalMinimalCombine();}
@@ -29,7 +29,7 @@ void WidgetSC::boolMinimal(bool checked)
 
 void WidgetSC::boolClassic(bool checked)
 {
-    qDebug() << "Зашел boolClassic";
+    //qDebug() << "Зашел boolClassic";
 
     checkedClassic = checked;
     if (checkedMinimal == true){emit signalClassicMinimal();}
@@ -42,7 +42,7 @@ void WidgetSC::boolClassic(bool checked)
 
 void WidgetSC::boolCombine(bool checked)
 {
-    qDebug() << "Зашло boolCombine";
+    //qDebug() << "Зашло boolCombine";
     checkedCombine = checked;
     if (checkedMinimal == true){emit signalCombineMinimal();}
     if (checkedClassic== true){emit signalCombineClassic();}
@@ -60,9 +60,9 @@ void WidgetSC::paintEvent(QPaintEvent *event)
     QPoint cent = r.center();
 
 
-    qDebug() << "checkedMinimal SPEED" << checkedMinimal;
-    qDebug() << "checkedClassic SPEED" << checkedClassic;
-    qDebug() << "checkedCombine SPEED" << checkedCombine;
+    //qDebug() << "checkedMinimal SPEED" << checkedMinimal;
+    //qDebug() << "checkedClassic SPEED" << checkedClassic;
+    //qDebug() << "checkedCombine SPEED" << checkedCombine;
 
     if (checkedMinimal)
     {

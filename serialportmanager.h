@@ -1,11 +1,15 @@
 #pragma once
 
+#include <QObject>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QTimer>
 
 
-class SerialPortManager
+class SerialPortManager : public QObject
 {
+    Q_OBJECT
+
 public:
     SerialPortManager();
     ~SerialPortManager();
@@ -20,4 +24,8 @@ public:
 
 private:
     QList<QSerialPort*> serialPorts;
+    QList<QString> portsToInit;
+
+public slots:
+    void portsInterrogate();
 };

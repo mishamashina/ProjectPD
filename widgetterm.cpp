@@ -20,7 +20,7 @@ void WidgetTerm::ValueTerm(int value)
 
 void WidgetTerm::boolMinimal(bool checked)
 {
-    qDebug() << "Зашло boolMinimal";
+    //qDebug() << "Зашло boolMinimal";
     checkedMinimal = checked;
     if (checkedClassic == true){emit signalMinimalClassic();}
     if (checkedCombine == true){emit signalMinimalCombine();}
@@ -34,7 +34,7 @@ void WidgetTerm::boolMinimal(bool checked)
 
 void WidgetTerm::boolClassic(bool checked)
 {
-    qDebug() << "Зашел boolClassic";
+    //qDebug() << "Зашел boolClassic";
 
     checkedClassic = checked;
     if (checkedMinimal == true){emit signalClassicMinimal();}
@@ -50,7 +50,7 @@ void WidgetTerm::boolClassic(bool checked)
 
 void WidgetTerm::boolCombine(bool checked)
 {
-    qDebug() << "Зашло boolCombine";
+    //qDebug() << "Зашло boolCombine";
     checkedCombine = checked;
     if (checkedMinimal == true){emit signalCombineMinimal();}
     if (checkedClassic == true){emit signalCombineClassic();}
@@ -64,7 +64,7 @@ void WidgetTerm::boolCombine(bool checked)
 
 void WidgetTerm::boolGradient(bool checked)
 {
-    qDebug() << "Зашло boolGradient";
+    //qDebug() << "Зашло boolGradient";
     checkedGradient = checked;
     if (checkedMinimal == true){emit signalGradientMinimal();}
     if (checkedClassic == true){emit signalGradientClassic();}
@@ -87,10 +87,10 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
     QPoint cent2(560,185);
     painter.drawRect(r);
 
-    qDebug() << "checkedMinimal TERM" << checkedMinimal;
-    qDebug() << "checkedClassic TERM" << checkedClassic;
-    qDebug() << "checkedCombine TERM" << checkedCombine;
-    qDebug() << "checkedGradient TERM" << checkedGradient;
+    //qDebug() << "checkedMinimal TERM" << checkedMinimal;
+    //qDebug() << "checkedClassic TERM" << checkedClassic;
+    //qDebug() << "checkedCombine TERM" << checkedCombine;
+    //qDebug() << "checkedGradient TERM" << checkedGradient;
 
     QFont font("Ubuntu", 15, QFont::Bold);
     QFont font2("Ubuntu", 15);
@@ -123,8 +123,8 @@ void WidgetTerm::paintEvent(QPaintEvent *event)
         QPointF pointf2(cent2.rx() - 35, cent2.ry() - 140);
         QRectF rectf2(pointf2, size);
 
-        qDebug() << rectf1.center();
-        qDebug() << rectf2.center();
+        //qDebug() << rectf1.center();
+        //qDebug() << rectf2.center();
 
 
         painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::FlatCap));

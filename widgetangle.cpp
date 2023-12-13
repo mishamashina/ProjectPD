@@ -29,6 +29,13 @@ void WidgetAngle::paintEvent(QPaintEvent *event)
     //      КОЛЁСА ПЕРЕМЕННЫЕ
     QRect r(0,0, this->width(), this->height());
     painter.drawRect(r);
+
+    // Масштабирование
+    QPoint extremePoint(530, 290);
+    double sx = 1. * width()/extremePoint.x();
+    double sy = 1. * height()/extremePoint.y();
+    painter.scale(std::min(sx, sy), std::min(sx, sy));
+
     painter.scale(0.5,0.5);
     int cornerRadius = 13;
     int wheelWidth = 50;
