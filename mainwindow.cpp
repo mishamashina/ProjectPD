@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent)
 {
     setWindowTitle("Project");
 
-    sm = new SerialPortManager("/dev/ttyACM0");
-    reader = new SerialPortReader(sm->getSerialPort());
-    reader->handleReadyRead();
+    //sm = new SerialPortManager("/dev/ttyACM0");
+    //reader = new SerialPortReader(sm->getSerialPort());
+    //reader->handleReadyRead();
 
     //widgetsInit();
 
@@ -33,24 +33,24 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent)
 
     w->setLayout(layout);
 
-    /*
+
     sm = new SerialPortManager();
     for(auto port : sm->getSerialPorts()){
         readers.append(new SerialPortReader(port));
         connect(readers.last(), SIGNAL(portOut(QString, QString)), this, SLOT(dataRedist(QString, QString))); // слот перекидывающий данные в соответствующий виджет
     }
-    */
+
 
     createActions();
     createMenus();
 
 
-    connect(reader, &SerialPortReader::ChangeValue, this, &MainWindow::ChangeValue);
+    /*connect(reader, &SerialPortReader::ChangeValue, this, &MainWindow::ChangeValue);
     connect(reader, &SerialPortReader::ChangeValue, widget_2, &WidgetZX::ValueZX);
     connect(reader, &SerialPortReader::ChangeValue, widget_3, &WidgetSC::ValueSC);
     connect(reader, &SerialPortReader::ChangeValue, widget_4, &WidgetTerm::ValueTerm);
     connect(reader, &SerialPortReader::ValueRezv, widget_5, &widgetdistRezv::distRezv);
-    connect(reader, &SerialPortReader::ChangeValue, widget, &WidgetAngle::ValueAngle);
+    connect(reader, &SerialPortReader::ChangeValue, widget, &WidgetAngle::ValueAngle);*/
 
   //  connect(reader, &SerialPortReader::ValueRezv, this, &MainWindow::distRezv);
 
@@ -163,3 +163,19 @@ void MainWindow::ChangeValue(int value)
     //ui->label_7->setNum(value);
 }
 
+void MainWindow::dataRedist(QString ID, QString value){
+    if(ID == "1") this->ChangeValue(value.toDouble());
+    else if(ID == "0") widget->ValueAngle(value.toDouble());
+    else if(ID == "2") widget_2->ValueZX(value.toDouble());
+    else if(ID == "3") widget_3->ValueSC(value.toDouble());
+    else if(ID == "4") widget_4->ValueTerm(value.toDouble());
+    else if(ID == "10") widget_5->distRezv(value.toUtf8());
+    else if(ID == "all") {
+        this->ChangeValue(value.toDouble());
+        widget->ValueAngle(value.toDouble());
+        widget_2->ValueZX(value.toDouble());
+        widget_3->ValueSC(value.toDouble());
+        widget_4->ValueTerm(value.toDouble());
+        widget_5->distRezv(value.toUtf8());
+    }
+}

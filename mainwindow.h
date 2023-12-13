@@ -24,7 +24,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    SerialPortReader* reader;
+    QList<SerialPortReader*> readers;
+    //SerialPortReader* reader;
     SerialPortManager *sm;
 
     void createActions();
@@ -66,6 +67,7 @@ public slots:
     void ChangeValue(int value);
    // void distRezv(QByteArray m_readData);
   //  void paintEvent(QPaintEvent *event);
+    void dataRedist(QString, QString);
 
 private:
 
