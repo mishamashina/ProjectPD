@@ -28,7 +28,14 @@ public:
     QList<SerialPortReader*> readers;
     SerialPortManager *sm;
 
-    void widgetsInitT1();
+    QTabWidget *tabs;
+    void mainPanelTab();
+    void navigationTab();
+    void infoTab();
+    void testTab();
+
+    QMenuBar *menuBar;
+
     void comReaderInit();
     void createActions();
     void createMenus();

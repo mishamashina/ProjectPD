@@ -1,13 +1,23 @@
 #include "mainwindow.h"
 #include <QtWidgets>
 #include <iostream>
+#include <QSizePolicy>
 
 
 MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent)
 {
     setWindowTitle("Project");
+    this->resize(1650, 950);
 
-    widgetsInitT1();
+    tabs = new QTabWidget(this);
+    this->setCentralWidget(tabs);
+    tabs->setTabsClosable(false);
+
+    mainPanelTab();
+    navigationTab();
+    infoTab();
+    testTab();
+
     comReaderInit();
     createActions();
     createMenus();
@@ -18,34 +28,71 @@ MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::widgetsInitT1(){
-    QWidget *w = new QWidget(this);
+void MainWindow::mainPanelTab(){
+    QWidget *w = new QWidget(tabs);
+    tabs->addTab(w, "main panel");
+
+    menuBar = new QMenuBar(w);
+    menuBar->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    QVBoxLayout *layoutM = new QVBoxLayout();
+
     QGridLayout *layout = new QGridLayout();
 
-    this->setCentralWidget(w);
     widget = new WidgetAngle(w);		// поворот колес
     widget_2 = new WidgetZX(w);			// запас хода
     widget_3 = new WidgetSC(w);			// спидометр
     widget_4 = new WidgetTerm(w);		// температура
     widget_5 = new widgetdistRezv(w);	// парктроник
-    widget_6 = new WidgetMap(w);		// карта
-    widget_7 = new TimeWidget(w);
+    widget_7 = new TimeWidget(w);		// время
 
-    /*layout->addWidget(widget , 2 , 3 , 1 , 1);
+    layout->addWidget(widget , 2 , 3 , 1 , 1);
     layout->addWidget(widget_2 , 1 , 2 , 1 , 1);
     layout->addWidget(widget_3 , 1 , 1 , 1 , 1);
     layout->addWidget(widget_4 , 2 , 1 , 1 , 2);
     layout->addWidget(widget_5 , 1 , 3 , 1 , 1);
-    layout->addWidget(widget_6 , 1 , 4 , 2 , 2);*/
+    layout->addWidget(widget_7 , 1 , 4 , 1 , 1);
 
-    widget->hide();
-    widget_2->hide();
-    widget_3->hide();
-    widget_4->hide();
-    widget_5->hide();
-    widget_6->hide();
+    layoutM->addWidget(menuBar);
+    layoutM->addLayout(layout);
+    w->setLayout(layoutM);
+}
 
-    layout->addWidget(widget_7 , 1 , 1 , 1 , 1);
+void MainWindow::navigationTab(){
+    QWidget *w = new QWidget(tabs);
+    tabs->addTab(w, "navigation");
+
+    QGridLayout *layout = new QGridLayout();
+
+    widget_6 = new WidgetMap(w);		// карта
+
+    layout->addWidget(widget_6, 1 , 1 , 1 , 1);
+
+    w->setLayout(layout);
+}
+
+void MainWindow::infoTab(){
+    QWidget *w = new QWidget(tabs);
+    tabs->addTab(w, "info");
+
+    QGridLayout *layout = new QGridLayout();
+
+    QLabel *info = new QLabel("some information", w);
+
+    layout->addWidget(info);
+
+    w->setLayout(layout);
+}
+
+void MainWindow::testTab(){
+    QWidget *w = new QWidget(tabs);
+    tabs->addTab(w, "test");
+
+
+    QGridLayout *layout = new QGridLayout();
+    QLabel *info = new QLabel("here may be some widgets to test", w);
+
+    layout->addWidget(info);
 
     w->setLayout(layout);
 }
@@ -97,7 +144,7 @@ void MainWindow::createActions()
 void MainWindow::createMenus()
 {
 
-    Customization = menuBar()->addMenu(tr("&Кастомизация"));
+    Customization = menuBar->addMenu(tr("&Кастомизация"));
 
     Speedometer = Customization->addMenu(tr("&Спидометр"));
     Speedometer->addAction(MinimalSpeed);

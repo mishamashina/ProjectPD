@@ -57,7 +57,7 @@ void widgetdistRezv::paintEvent(QPaintEvent *event)
     painter.drawRect(r);
 
     // Масштабирование
-    qDebug() << width() << ' ' << height();
+    //qDebug() << width() << ' ' << height();
     QPoint extremePoint(600, 400);
     double sx = 1. * width()/extremePoint.x();
     double sy = 1. * height()/extremePoint.y();

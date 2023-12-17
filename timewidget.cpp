@@ -22,7 +22,3 @@ void TimeWidget::paintEvent(QPaintEvent *)
                      QDateTime::currentDateTime().toString("MMM d yyyy"));
     } else painter.drawText(rect(), Qt::AlignCenter, QDateTime::currentDateTime().toString("hh:mm:ss"));
 }
-
-bool TimeWidget::getDateFlag(){
-    return dateFlag;
-}
