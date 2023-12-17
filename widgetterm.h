@@ -8,7 +8,7 @@ class WidgetTerm: public QWidget
 {
     Q_OBJECT
 public:
-    WidgetTerm(QWidget *parent = nullptr);
+    explicit WidgetTerm(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
     int num_lb;
     QString num_lbString;

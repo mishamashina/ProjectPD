@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent)
 {
     setWindowTitle("Project");
 
-    widgetsInit();
+    widgetsInitT1();
     comReaderInit();
     createActions();
     createMenus();
@@ -18,7 +18,7 @@ MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::widgetsInit(){
+void MainWindow::widgetsInitT1(){
     QWidget *w = new QWidget(this);
     QGridLayout *layout = new QGridLayout();
 
@@ -29,13 +29,23 @@ void MainWindow::widgetsInit(){
     widget_4 = new WidgetTerm(w);		// температура
     widget_5 = new widgetdistRezv(w);	// парктроник
     widget_6 = new WidgetMap(w);		// карта
+    widget_7 = new TimeWidget(w);
 
-    layout->addWidget(widget , 2 , 3 , 1 , 1);
+    /*layout->addWidget(widget , 2 , 3 , 1 , 1);
     layout->addWidget(widget_2 , 1 , 2 , 1 , 1);
     layout->addWidget(widget_3 , 1 , 1 , 1 , 1);
     layout->addWidget(widget_4 , 2 , 1 , 1 , 2);
     layout->addWidget(widget_5 , 1 , 3 , 1 , 1);
-    layout->addWidget(widget_6 , 1 , 4 , 2 , 2);
+    layout->addWidget(widget_6 , 1 , 4 , 2 , 2);*/
+
+    widget->hide();
+    widget_2->hide();
+    widget_3->hide();
+    widget_4->hide();
+    widget_5->hide();
+    widget_6->hide();
+
+    layout->addWidget(widget_7 , 1 , 1 , 1 , 1);
 
     w->setLayout(layout);
 }

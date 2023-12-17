@@ -8,7 +8,7 @@ class widgetdistRezv : public QWidget
 {
     Q_OBJECT
 public:
-    widgetdistRezv(QWidget *parent = nullptr);
+    explicit widgetdistRezv(QWidget *parent = nullptr);
     int value;
     int  ColorPick1;
     QString  ColorPick1string;

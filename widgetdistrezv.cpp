@@ -41,13 +41,12 @@ void widgetdistRezv::distRezv(QByteArray m_readData)	// обработка вх�
     ColorPick1 = value / 10000000 % 10;
     //qDebug() << "Значение ColorPick1" << ColorPick1;
     ColorPick1string = QString::number(ColorPick1);
-    updateGeometry();
+    update();
 }
 
 void widgetdistRezv::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
-    adjustSize();
     QPainter painter(this);
 
     QPen pen;

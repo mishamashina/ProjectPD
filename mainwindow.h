@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include "serialportmanager.h"
 #include "serialportreader.h"
+#include "timewidget.h"
 #include "widgetangle.h"
 #include "widgetdistrezv.h"
 #include "widgetsc.h"
@@ -25,10 +26,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QList<SerialPortReader*> readers;
-    //SerialPortReader* reader;
     SerialPortManager *sm;
 
-    void widgetsInit();
+    void widgetsInitT1();
     void comReaderInit();
     void createActions();
     void createMenus();
@@ -40,16 +40,7 @@ public:
     WidgetTerm *widget_4;
     widgetdistRezv *widget_5;
     WidgetMap *widget_6;
-
-    int value;
-    int  ColorPick1;
-    int  ColorPick2;
-    int  ColorPick3;
-    int  ColorPick4;
-    int  ColorPick5;
-    int  ColorPick6;
-    int  ColorPick7;
-    int  ColorPick8;
+    TimeWidget *widget_7;
 
     QMenu *Speedometer;
     QMenu *Termometer;
@@ -67,8 +58,6 @@ public:
 
 public slots:
     void ChangeValue(int value);
-   // void distRezv(QByteArray m_readData);
-  //  void paintEvent(QPaintEvent *event);
     void dataRedist(QString, QString);
 
 private:

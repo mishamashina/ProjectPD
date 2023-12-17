@@ -11,7 +11,7 @@ class SerialPortManager : public QObject
     Q_OBJECT
 
 public:
-    SerialPortManager();
+    explicit SerialPortManager();
     ~SerialPortManager();
 
     QSerialPort *serialPortInit(QString portName,
