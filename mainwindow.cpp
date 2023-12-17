@@ -139,6 +139,17 @@ void MainWindow::createActions()
     GradientTerm = new QAction(tr("&Градиентный"), this);
     GradientTerm->setStatusTip(tr("Градиентный дизайн"));
     GradientTerm->setCheckable(true);
+
+    ///////////////////////////////////////////////////////////
+
+    StaticDist = new QAction(tr("&Статический"), this);
+    StaticDist->setStatusTip(tr("Статический дизайн"));
+    StaticDist->setCheckable(true);
+    StaticDist->setChecked(true);
+
+    DynamicDist = new QAction(tr("&Динамический"), this);
+    DynamicDist->setStatusTip(tr("Динамический дизайн"));
+    DynamicDist->setCheckable(true);
 }
 
 void MainWindow::createMenus()
@@ -157,6 +168,9 @@ void MainWindow::createMenus()
     Termometer->addAction(CombineTerm);
     Termometer->addAction(GradientTerm);
 
+    DistSensor = Customization->addMenu(tr("&Парктроник"));
+    DistSensor->addAction(StaticDist);
+    DistSensor->addAction(DynamicDist);
 }
 
 void MainWindow::customizationLogic(){
@@ -170,6 +184,9 @@ void MainWindow::customizationLogic(){
     connect(ClassicTerm, &QAction::triggered, widget_4, &WidgetTerm::boolClassic);
     connect(CombineTerm, &QAction::triggered, widget_4, &WidgetTerm::boolCombine);
     connect(GradientTerm, &QAction::triggered, widget_4, &WidgetTerm::boolGradient);
+
+    connect(StaticDist, &QAction::triggered, widget_5, &widgetdistRezv::boolStatic);
+    connect(DynamicDist, &QAction::triggered, widget_5, &widgetdistRezv::boolDynamic);
 
     ///////////////////////////////////////////////////////////
 
@@ -204,6 +221,12 @@ void MainWindow::customizationLogic(){
     connect(widget_4, &WidgetTerm::signalGradientCombine, CombineTerm, &QAction::toggle);
     //connect(ui->widget_3, &WidgetSC::signalCombinePers, CombineS, &QAction::setChecked);
 
+    /////////////////////////////////////////////////////////// Резвых Датчик расстояния
+
+    connect(widget_5, &widgetdistRezv::signalDynamicStatic, StaticDist, &QAction::toggle);
+    connect(widget_5, &widgetdistRezv::signalStaticDynamic, DynamicDist, &QAction::toggle);
+
+    ///////////////////////////////////////////////////////////Резвых Датчик расстояния
 
 }
 

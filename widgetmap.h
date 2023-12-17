@@ -16,15 +16,13 @@ public:
 
     QImage myImage;
 
-    void initImage(QImage myImage);
-
     int countMinus = 0;
     int countPlus = 0;
     float scaleMinus = 0.03;
     float scaleMinusAll;
     float scalePlus = 0.03;
     float scalePlusAll;
-    int count = 0;
+    //int count = 0;
     float teky = 1;
 
     int countUp = 0;

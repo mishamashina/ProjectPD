@@ -50,6 +50,7 @@ public:
     TimeWidget *widget_7;
 
     QMenu *Speedometer;
+    QMenu *DistSensor;
     QMenu *Termometer;
     QMenu *Customization;
 
@@ -62,6 +63,8 @@ public:
     QAction *CombineTerm;
     QAction *GradientTerm;
 
+    QAction *StaticDist;
+    QAction *DynamicDist;
 
 public slots:
     void ChangeValue(int value);

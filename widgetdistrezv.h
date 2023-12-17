@@ -8,7 +8,7 @@ class widgetdistRezv : public QWidget
 {
     Q_OBJECT
 public:
-    explicit widgetdistRezv(QWidget *parent = nullptr);
+    widgetdistRezv(QWidget *parent = nullptr);
     int value;
     int  ColorPick1;
     QString  ColorPick1string;
@@ -27,9 +27,15 @@ public:
     int  ColorPick8;
     QString  ColorPick8string;
     void paintEvent(QPaintEvent *event);
+    bool checkedStatic;
+    bool checkedDynamic;
 
 public slots:
     void distRezv(QByteArray m_readData);
+    void boolStatic(bool checked);
+    void boolDynamic(bool checked);
 
-
+signals:
+    void signalDynamicStatic();
+    void signalStaticDynamic();
 };
