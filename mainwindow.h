@@ -10,6 +10,7 @@
 #include "widgetterm.h"
 #include "widgetzx.h"
 #include "widgetmap.h"
+#include "widgetturn.h"
 
 #include <QMainWindow>
 #include <QSerialPort>

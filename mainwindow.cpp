@@ -92,7 +92,16 @@ void MainWindow::testTab(){
     QGridLayout *layout = new QGridLayout();
     QLabel *info = new QLabel("here may be some widgets to test", w);
 
-    layout->addWidget(info);
+    WidgetTurn *testW = new WidgetTurn(w , false);
+    QPushButton *sw = new QPushButton("switch\nstate", w);
+    QPushButton *sd = new QPushButton("switch\ndirection", w);
+    layout->addWidget(info , 1 , 1 , 1 , 1);
+    layout->addWidget(testW , 2 , 1 , 1 , 2);
+    layout->addWidget(sw , 3 , 1 , 1 , 1);
+    layout->addWidget(sd , 3 , 2 , 1 , 1);
+
+    connect(sw, SIGNAL(clicked(bool)), testW, SLOT(switchState()));
+    connect(sd, SIGNAL(clicked(bool)), testW, SLOT(switchDirection()));
 
     w->setLayout(layout);
 }

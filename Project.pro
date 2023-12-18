@@ -35,6 +35,7 @@ SOURCES += \
     widgetmap.cpp \
     widgetsc.cpp \
     widgetterm.cpp \
+    widgetturn.cpp \
     widgetzx.cpp
 
 HEADERS += \
@@ -47,6 +48,7 @@ HEADERS += \
     widgetmap.h \
     widgetsc.h \
     widgetterm.h \
+    widgetturn.h \
     widgetzx.h
 
 
